@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuvStein Files</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <h1>PuvStein Files</h1>
+        <p>Click any photo to view it full size.</p>
+    </header>
+
+    <main class="gallery-grid" aria-label="Photo gallery">
+        <figure class="gallery-item">
+            <button type="button" class="gallery-button" data-full="images/1.png" data-title="Photo 1">
+                <img src="images/1.png" alt="Photo 1">
+                <figcaption>Photo 1</figcaption>
+            </button>
+        </figure>
+
+        <figure class="gallery-item">
+            <button type="button" class="gallery-button" data-full="images/2.png" data-title="Photo 2">
+                <img src="images/2.png" alt="Photo 2">
+                <figcaption>Photo 2</figcaption>
+            </button>
+        </figure>
+
+        <figure class="gallery-item">
+            <button type="button" class="gallery-button" data-full="images/3.png" data-title="Photo 3">
+                <img src="images/3.png" alt="Photo 3">
+                <figcaption>Photo 3</figcaption>
+            </button>
+        </figure>
+
+        <figure class="gallery-item">
+            <button type="button" class="gallery-button" data-full="images/4.png" data-title="Photo 4">
+                <img src="images/4.png" alt="Photo 4">
+                <figcaption>Photo 4</figcaption>
+            </button>
+        </figure>
+
+        <figure class="gallery-item">
+            <button type="button" class="gallery-button" data-full="images/5.png" data-title="Photo 5">
+                <img src="images/5.png" alt="Photo 5">
+                <figcaption>Photo 5</figcaption>
+            </button>
+        </figure>
+    </main>
+
+    <footer class="site-footer">
+        <p>Made by <a href="https://twitter.com/onlyplxgx" target="_blank" rel="noopener">plxgx</a></p>
+    </footer>
+
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+        <button class="lightbox-close" aria-label="Close">✕</button>
+        <img class="lightbox-image" src="" alt="">
+        <p class="lightbox-caption"></p>
+    </div>
+
+    <script>
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImage = lightbox.querySelector('.lightbox-image');
+        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        const closeButton = lightbox.querySelector('.lightbox-close');
+
+        function openLightbox(src, title) {
+            lightboxImage.src = src;
+            lightboxImage.alt = title;
+            lightboxCaption.textContent = title;
+            lightbox.hidden = false;
+            document.body.style.overflow = 'hidden';
+            closeButton.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.hidden = true;
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.gallery-button').forEach(button => {
+            button.addEventListener('click', () => {
+                openLightbox(button.dataset.full, button.dataset.title);
+            });
+        });
+
+        closeButton.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !lightbox.hidden) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
