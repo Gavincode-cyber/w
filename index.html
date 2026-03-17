@@ -113,10 +113,12 @@ Puv of the North, where puv’s island resides, Lux of the South, who has connec
         });
 
         const loreToggle = document.getElementById('loreToggle');
-        loreToggle.addEventListener('click', () => {
-            document.body.classList.toggle('lore-visible');
-            loreToggle.textContent = document.body.classList.contains('lore-visible') ? 'Hide Lore' : 'Lore';
-        });
+        if (loreToggle) {
+            loreToggle.addEventListener('click', () => {
+                document.body.classList.toggle('lore-visible');
+                loreToggle.textContent = document.body.classList.contains('lore-visible') ? 'Hide Lore' : 'Lore';
+            });
+        }
     </script>
 </body>
 </html>
