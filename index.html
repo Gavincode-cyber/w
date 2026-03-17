@@ -14,6 +14,7 @@
         <h1>PuvStein Files</h1>
         <p>Click any photo to view it full size.</p>
     </header>
+    <button class="lore-toggle" id="loreToggle" type="button">Lore</button>
 
     <main class="gallery-grid" aria-label="Photo gallery">
         <figure class="gallery-item">
@@ -21,6 +22,7 @@
                 <img src="images/1.png" alt="Photo 1">
                 <figcaption>Photo 1</figcaption>
             </button>
+            <p class="lore-text">The temple is where Puv’s followers reside. Puv himself lived under the temple with secret farms no one can access.</p>
         </figure>
 
         <figure class="gallery-item">
@@ -28,6 +30,8 @@
                 <img src="images/2.png" alt="Photo 2">
                 <figcaption>Photo 2</figcaption>
             </button>
+            <p class="lore-text">The Ship. This shows a ship from a group of pirates who trespassed on puv’s island, and the rest is evidently shown. The pirates fought long and hard, but their ship got sunk, and Puv rules again. 
+</p>
         </figure>
 
         <figure class="gallery-item">
@@ -35,6 +39,9 @@
                 <img src="images/3.png" alt="Photo 3">
                 <figcaption>Photo 3</figcaption>
             </button>
+            <p class="lore-text">The layout is a ritual they perform, for protection from Mojan themselves. It’s meant to ask them to see the future, even though the future isn’t always correct.
+The orange is easily one of the most noticeable colors on the island. 
+</p>
         </figure>
 
         <figure class="gallery-item">
@@ -42,6 +49,9 @@
                 <img src="images/4.png" alt="Photo 4">
                 <figcaption>Photo 4</figcaption>
             </button>
+            <p class="lore-text">The fourth photo, is the meeting room, Puv, Lux, Bullrtr and Polo.
+Puv of the North, where puv’s island resides, Lux of the South, who has connections with puv, Bullrtr, who resides in the east, one of the more violent leaders and Polo, he’s a bitch, easy food, but rules with “might”. Oh and he’s the ruler of the west 💔😭(WHO PUT BRO INCHARGE????)
+</p>
         </figure>
 
         <figure class="gallery-item">
@@ -49,11 +59,14 @@
                 <img src="images/5.png" alt="Photo 5">
                 <figcaption>Photo 5</figcaption>
             </button>
+            <p class="lore-text">The last photo shows Bullrtr paying respects to his temple, and showing her gratitude to how much materials she borrowed. 
+</p>
         </figure>
     </main>
 
     <footer class="site-footer">
         <p>Made by <a href="https://twitter.com/onlyplxgx" target="_blank" rel="noopener">plxgx</a></p>
+        <p>Lore by BorrisTheOne</p>
     </footer>
 
     <div class="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
@@ -97,6 +110,12 @@
             if (event.key === 'Escape' && !lightbox.hidden) {
                 closeLightbox();
             }
+        });
+
+        const loreToggle = document.getElementById('loreToggle');
+        loreToggle.addEventListener('click', () => {
+            document.body.classList.toggle('lore-visible');
+            loreToggle.textContent = document.body.classList.contains('lore-visible') ? 'Hide Lore' : 'Lore';
         });
     </script>
 </body>
