@@ -76,49 +76,53 @@ Puv of the North, where puv’s island resides, Lux of the South, who has connec
     </div>
 
     <script>
-        const lightbox = document.querySelector('.lightbox');
-        const lightboxImage = lightbox.querySelector('.lightbox-image');
-        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
-        const closeButton = lightbox.querySelector('.lightbox-close');
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.remove('lore-visible');
 
-        function openLightbox(src, title) {
-            lightboxImage.src = src;
-            lightboxImage.alt = title;
-            lightboxCaption.textContent = title;
-            lightbox.hidden = false;
-            document.body.style.overflow = 'hidden';
-            closeButton.focus();
-        }
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImage = lightbox.querySelector('.lightbox-image');
+            const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+            const closeButton = lightbox.querySelector('.lightbox-close');
 
-        function closeLightbox() {
-            lightbox.hidden = true;
-            document.body.style.overflow = '';
-        }
+            function openLightbox(src, title) {
+                lightboxImage.src = src;
+                lightboxImage.alt = title;
+                lightboxCaption.textContent = title;
+                lightbox.hidden = false;
+                document.body.style.overflow = 'hidden';
+                closeButton.focus();
+            }
 
-        document.querySelectorAll('.gallery-button').forEach(button => {
-            button.addEventListener('click', () => {
-                openLightbox(button.dataset.full, button.dataset.title);
+            function closeLightbox() {
+                lightbox.hidden = true;
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.gallery-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    openLightbox(button.dataset.full, button.dataset.title);
+                });
             });
-        });
 
-        closeButton.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (event) => {
-            if (event.target === lightbox) closeLightbox();
-        });
+            closeButton.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox) closeLightbox();
+            });
 
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && !lightbox.hidden) {
-                closeLightbox();
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !lightbox.hidden) {
+                    closeLightbox();
+                }
+            });
+
+            const loreToggle = document.getElementById('loreToggle');
+            if (loreToggle) {
+                loreToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('lore-visible');
+                    loreToggle.textContent = document.body.classList.contains('lore-visible') ? 'Hide Lore' : 'Lore';
+                });
             }
         });
-
-        const loreToggle = document.getElementById('loreToggle');
-        if (loreToggle) {
-            loreToggle.addEventListener('click', () => {
-                document.body.classList.toggle('lore-visible');
-                loreToggle.textContent = document.body.classList.contains('lore-visible') ? 'Hide Lore' : 'Lore';
-            });
-        }
     </script>
 </body>
 </html>
